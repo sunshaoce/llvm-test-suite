@@ -65,7 +65,7 @@ static char Rcs_Id[] =
  * Revision 1.131  1995/01/08  23:23:39  geoff
  * Support variable hashfile suffixes for DOS purposes.  Report all the
  * new configuration variables in the -vv switch.  Do some better error
- * checking for mktemp failures.  Support the rename system call.  All of
+ * checking for mkstemp failures.  Support the rename system call.  All of
  * this is to help make DOS porting easier.
  *
  * Revision 1.130  1995/01/03  19:24:08  geoff
@@ -199,9 +199,9 @@ static void initckch (wchars)
 	    else
 		{
 		++wchars;
-		num[0] = '\0'; 
-		num[1] = '\0'; 
-		num[2] = '\0'; 
+		num[0] = '\0';
+		num[1] = '\0';
+		num[2] = '\0';
 		num[3] = '\0';
 		if (isdigit (wchars[0]))
 		    {
@@ -754,7 +754,7 @@ int main (argc, argv)
 
     initckch(wchars);
 
-    if (LibDict == NULL)	
+    if (LibDict == NULL)
 	{
 	(void) strcpy (libdictname, DEFHASH);
 	LibDict = libdictname;
@@ -841,7 +841,7 @@ static void dofile (filename)
 
     (void) fstat (fileno (infile), &statbuf);
     (void) strcpy (tempfile, TEMPNAME);
-    if (mktemp (tempfile) == NULL  ||  tempfile[0] == '\0'
+    if (mkstemp (tempfile) == NULL  ||  tempfile[0] == '\0'
       ||  (outfile = fopen (tempfile, "w")) == NULL)
 	{
 	(void) fprintf (stderr, CANT_CREATE,

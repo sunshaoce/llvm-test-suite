@@ -179,15 +179,15 @@ void openfiles(void)
       fdefines = stdout; /*tryopen(defsfile, "w");*/
     }
 
-  actfile = mktemp(stringappend(tmp_base, tmp_len, "act.XXXXXX"));
+  actfile = mkstemp(stringappend(tmp_base, tmp_len, "act.XXXXXX"));
   faction = stdout; /*tryopen(actfile, "w+");
   unlink(actfile);*/
 
-  tmpattrsfile = mktemp(stringappend(tmp_base, tmp_len, "attrs.XXXXXX"));
+  tmpattrsfile = mkstemp(stringappend(tmp_base, tmp_len, "attrs.XXXXXX"));
   fattrs = stdout; /*tryopen(tmpattrsfile,"w+");
   unlink(tmpattrsfile);*/
 
-  tmptabfile = mktemp(stringappend(tmp_base, tmp_len, "tab.XXXXXX"));
+  tmptabfile = mkstemp(stringappend(tmp_base, tmp_len, "tab.XXXXXX"));
   ftable = stdout; /*tryopen(tmptabfile, "w+");
   unlink(tmptabfile);*/
 

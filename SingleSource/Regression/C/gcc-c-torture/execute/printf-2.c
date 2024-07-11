@@ -23,7 +23,7 @@ write_file (void)
 
 int main (void)
 {
-  char *tmpfname = tmpnam (0);
+  char *tmpfname = mkstemp(0);
   FILE *f = freopen (tmpfname, "w", stdout);
   if (!f)
     {
